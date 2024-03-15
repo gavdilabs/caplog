@@ -1,0 +1,40 @@
+{
+  "name": "@gavdi/caplog",
+  "version": "2.4.8",
+  "description": "Easy NodeJS Logging Utils",
+  "author": "Simon Vestergaard Laursen",
+  "repository": "github:gavdilabs/caplog",
+  "license": "Apache-2.0",
+  "private": false,
+  "keywords": [
+    "logging",
+    "cap",
+    "sap"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc --project tsconfig.build.json",
+    "docs": "typedoc --out docs src/index.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "@sap/cds": "^7.5.0"
+  },
+  "devDependencies": {
+    "@sap/cds": "^7.5.0",
+    "@types/jest": "^27.5.2",
+    "jest": "^28.1.3",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.7",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typedoc": "^0.22.18",
+    "typescript": "^4.7.4"
+  }
+}
