@@ -15,7 +15,7 @@ export default class LoggerFactory {
    * @returns {Logger}
    */
   public static createLogger(
-    relation?: Service | string | null,
+    relation?: Service | string,
     formatter?: Formatter,
   ): Logger {
     const logger = log(this._determineLoggerName(relation));
