@@ -8,6 +8,14 @@
 import LoggerFactory from "./factory";
 import { Log, Logger } from "./Logger";
 import { Formatter, LogLevel } from "./types";
-import { translateLogLevel } from "./utils";
+import { translateLogLevel, legacyFormatter } from "./utils";
 
-export { LoggerFactory, Logger, Log, Formatter, translateLogLevel, LogLevel };
+export {
+  LoggerFactory,
+  Logger,
+  Log,
+  Formatter,
+  translateLogLevel,
+  LogLevel,
+  legacyFormatter,
+};

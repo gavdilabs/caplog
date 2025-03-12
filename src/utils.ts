@@ -1,3 +1,5 @@
+import cds from "@sap/cds";
+
 /**
  * Mapping of log level number value to human readable string version
  */
@@ -36,4 +38,11 @@ export function translateLogLevel(logLevel: number): string {
     default:
       return _levels[3];
   }
+}
+
+export function legacyFormatter(id: string, level: number, args: any[]): any[] {
+    return [`[${new Date().toISOString()}|::${translateLogLevel(level)}::|${
+      cds.context?.tenant || "-"
+    }|${cds.context?.id || "-"}|${id}] -`,
+    ...args,]
 }
