@@ -1,11 +1,8 @@
 # @gavdi/caplog - Easy CAP Logging Utility
 
-> Current Version: 2.0.0
+> Current Version: 3.0.0
 >
-> **NOTE:** This version contains breaking changes from the previous 1.0.1 version!
->
-> @gavdi/caplog no longer makes use of any external logging component to integrate with the CAP environment.
-> This change has been made to ensure full compatability with telemetry offerings in the cloud environment.
+> **NOTE:** This version contains breaking changes from the previous 2.x versions!
 
 > Maintainer: Simon Laursen - svl@gavdilabs.com
 
@@ -13,7 +10,7 @@
 
 ```@gavdi/caplog``` is a small and tiny logging package that provides a simple and clean logging output to allow for better readability on BTP.
 
-In the new 2.0 version of the logging package, the package abstracts away the logging facade native within CAP and provides type declarations.
+In the new 3.0 version of the logging package, the package abstracts away the logging facade native within CAP and provides type declarations.
 
 The logger is intended for providing concise and clear information to the developer concerning their service, and with the new version now also through open telemetry.
 
@@ -40,7 +37,16 @@ LoggerFactory.createLogger("custom");
 LoggerFactory.createLogger(Service);
 ```
 
-The format you'll receive on your logged messages will look as follows:
+By default, the format chosen will be matching that of the standard CDS logging that you see from the CAP framework, however if you wish, you can use the legacy pretty format used in 2.0 by including the following:
+
+```typescript
+import { LoggerFactory, legacyFormatter } from "@gavdi/caplog";
+
+// With pretty format
+LoggerFactory.createLogger("custom", legacyFormatter);
+```
+
+The format you'll receive on your logged messages will then look as follows:
 
 ```txt
 [2024-01-03T11:42:38.045Z |::TRACE::| <tenant-id> | <ctx-id> | <log-id> ] Your message will be here
