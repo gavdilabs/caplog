@@ -7,6 +7,8 @@ import { Logger } from "cf-nodejs-logging-support";
  * Static class containing the wrapping methods for creating a CAP Logging component.
  */
 export default class LoggerFactory {
+  private static calmLogger: Logger;
+
   /**
    * Creates a new logger connected to the CDS layer.
    *
@@ -29,13 +31,17 @@ export default class LoggerFactory {
   }
 
   /**
-   * Creates a new logger targeting Cloud ALM standards.
+   * Creates or fetches a logger targeting Cloud ALM standards.
    *
    * @public
    * @returns {Logger}
    */
   public static createCalmLogger(): Logger {
-    return new Logger();
+    if (!this.calmLogger) {
+      this.calmLogger = new Logger();
+    }
+
+    return this.calmLogger;
   }
 
   private static _determineLoggerName(
