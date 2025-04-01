@@ -1,7 +1,11 @@
 import { log, Service } from "@sap/cds";
 import { Formatter } from "./types";
 import { Logger as LoggerDefinition } from "./Logger";
-import { Logger } from "cf-nodejs-logging-support";
+import CFLogging, { Framework, Logger } from "cf-nodejs-logging-support";
+
+type LogLevel = "error" | "warn" | "info" | "verbose" | "debug" | "silly";
+
+CFLogging.setFramework(Framework.Express);
 
 /**
  * Static class containing the wrapping methods for creating a CAP Logging component.
@@ -39,6 +43,7 @@ export default class LoggerFactory {
   public static createCalmLogger(): Logger {
     if (!this.calmLogger) {
       this.calmLogger = new Logger();
+      this.calmLogger.setLoggingLevel(this._determineLoggingLevel());
     }
 
     return this.calmLogger;
@@ -49,5 +54,10 @@ export default class LoggerFactory {
   ): string {
     if (relation instanceof Service) return relation.name;
     return relation;
+  }
+
+  private static _determineLoggingLevel(): LogLevel {
+    const envCfg = process.env["CAPLOG_LEVEL"];
+    return envCfg && envCfg !== "" ? (envCfg as LogLevel) : "info";
   }
 }
