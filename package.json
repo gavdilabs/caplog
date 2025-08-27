@@ -1,6 +1,6 @@
 {
   "name": "@gavdi/caplog",
-  "version": "3.1.4-beta",
+  "version": "4.0.0",
   "description": "Easy NodeJS Logging Utils",
   "author": "Simon Vestergaard Laursen",
   "repository": "github:gavdilabs/caplog",
@@ -24,11 +24,11 @@
     "lint": "tslint -p tsconfig.json"
   },
   "peerDependencies": {
-    "@sap/cds": "^8",
+    "@sap/cds": "^9.2.1",
     "cf-nodejs-logging-support": "^7.5.0-beta.0"
   },
   "devDependencies": {
-    "@cap-js/cds-types": "^0.9.0",
+    "@cap-js/cds-types": "^0.13.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^20.10.6",
     "jest": "^28.1.3",
